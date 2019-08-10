@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Search from './Search'
+import TestData from './TestData'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [zooplaData, setZooplaData] = useState({
-    data: []
+    data: TestData
   })
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/')
-      .then(response => response.json())
-      .then(response => setZooplaData({ zooplaData: response }))
-      .catch(error => console.log('Fetch error: ', error))
-  }, [searchTerm])
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/todos/')
+  //     .then(response => response.json())
+  //     .then(response => setZooplaData({ zooplaData: response }))
+  //     .catch(error => console.log('Fetch error: ', error))
+  // }, [searchTerm])
 
   return (
     <div className="App">
