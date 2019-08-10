@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import TestData from './TestData'
+import React from 'react'
 import HouseCard from './HouseCard';
 import styled from 'styled-components'
 
@@ -13,9 +12,7 @@ const GalleryContainer = styled.div`
   margin: 40px 0 40px 0;
 `
 
-const Gallery = () => {
-  const [zooplaData, setZooplaData] = useState(TestData)
-
+const Gallery = ({ zooplaData }) => {
   return (
     <GalleryContainer>
       {zooplaData.map(property => <HouseCard image_url={property.image_url} displayable_address={property.displayable_address} price={property.price} short_description={property.short_description} num_bathrooms={property.num_bathrooms}/>)}

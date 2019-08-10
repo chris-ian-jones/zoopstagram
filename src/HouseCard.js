@@ -10,6 +10,7 @@ const StyledCardDescription = styled(Card.Description)`
 
 const HouseCard = ({ image_url, displayable_address, price, short_description, num_bathrooms }) => {
   const numPrice = parseInt(price)
+  const short_descriptionLength = short_description.length
 
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,')
@@ -24,7 +25,7 @@ const HouseCard = ({ image_url, displayable_address, price, short_description, n
           <span>{numPrice > 0 ? `£${formatNumber(numPrice)}` : '' }</span>
         </Card.Meta>
         <StyledCardDescription>
-          {short_description}
+          <span>{short_descriptionLength < 600 ? short_description : '' }</span>
         </StyledCardDescription>
       </Card.Content>
       <Card.Content extra>

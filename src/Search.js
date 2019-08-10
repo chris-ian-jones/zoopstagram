@@ -7,7 +7,7 @@ const StyledForm = styled.form`
 `
 
 function Search({ setSearchTerm }) {
-  const [searchField, setSearchField] = useState({ search: '' })
+  const [searchField, setSearchField] = useState('')
 
   const handleChange = event => {
     setSearchField({ ...searchField, [event.target.name]: event.target.value })
@@ -20,14 +20,10 @@ function Search({ setSearchTerm }) {
   }
 
   return (
-    <>
-      {console.log('Search.js rendered searchField: ', searchField)}
-      {/* {console.log('rendered search props: ', props)} */}
       <StyledForm onSubmit={event => handleSubmit(event)}>
-        <Input size='massive' icon='search' type='text' name='search' placeholder='Enter area or postcode...' onChange={event => handleChange(event)} />
+        <Input size='massive' icon='search' type='text' name='search' placeholder='City' onChange={event => handleChange(event)} />
         <Button color='violet' size='massive'>Search</Button>
       </StyledForm>
-    </>
   )
 }
 
