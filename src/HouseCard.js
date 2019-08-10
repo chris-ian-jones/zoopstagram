@@ -1,19 +1,31 @@
 import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import styled from 'styled-components'
+
+const StyledCardDescription = styled(Card.Description)`
+  margin: 0 2% 0 2%;
+  text-align: left;
+`
 
 const HouseCard = ({ image_url, displayable_address, price, short_description, num_bathrooms }) => {
+  const numPrice = parseInt(price)
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,')
+  }
+
   return (
     <Card>
       <Image src={image_url} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{displayable_address}</Card.Header>
         <Card.Meta>
-          <span>£{price}</span>
+          <span>{numPrice > 0 ? `£${formatNumber(numPrice)}` : '' }</span>
         </Card.Meta>
-        <Card.Description>
+        <StyledCardDescription>
           {short_description}
-        </Card.Description>
+        </StyledCardDescription>
       </Card.Content>
       <Card.Content extra>
         <a>

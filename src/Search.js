@@ -1,4 +1,10 @@
 import React, { useState } from 'react'
+import { Input, Button } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledForm = styled.form`
+  margin: 40px 0 40px 0;
+`
 
 function Search({ setSearchTerm }) {
   const [searchField, setSearchField] = useState({ search: '' })
@@ -17,10 +23,10 @@ function Search({ setSearchTerm }) {
     <>
       {console.log('Search.js rendered searchField: ', searchField)}
       {/* {console.log('rendered search props: ', props)} */}
-      <form onSubmit={event => handleSubmit(event)}>
-        <input type='text' name='search' placeholder='Enter area or postcode...' onChange={event => handleChange(event)} />
-        <button>Search</button>
-      </form>
+      <StyledForm onSubmit={event => handleSubmit(event)}>
+        <Input size='massive' icon='search' type='text' name='search' placeholder='Enter area or postcode...' onChange={event => handleChange(event)} />
+        <Button color='violet' size='massive'>Search</Button>
+      </StyledForm>
     </>
   )
 }
