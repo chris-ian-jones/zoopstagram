@@ -12,8 +12,7 @@ const IconsContainer = styled.div`
   justify-content: space-evenly;
 `
 
-const HouseCard = (props) => {
-  const { imageUrl, displayableAddress, price, shortDescription, numBathrooms, numBedrooms, detailsUrl } = props
+const HouseCard = ({ imageUrl, displayableAddress, price, shortDescription, numBathrooms, numBedrooms, detailsUrl }) => {
   const numPrice = parseInt(price)
   const shortDescriptionLength = shortDescription.length
 

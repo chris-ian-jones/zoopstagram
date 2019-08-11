@@ -7,7 +7,7 @@ const StyledForm = styled.form`
 `
 
 function Search({ setSearchTerm }) {
-  const [searchField, setSearchField] = useState('')
+  const [searchField, setSearchField] = useState("")
 
   const handleChange = event => {
     setSearchField({ ...searchField, [event.target.name]: event.target.value })

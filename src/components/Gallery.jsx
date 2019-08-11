@@ -1,5 +1,5 @@
 import React from 'react'
-import HouseCard from './HouseCard';
+import HouseCard from './HouseCard'
 import styled from 'styled-components'
 
 const GalleryContainer = styled.div`
@@ -16,13 +16,14 @@ const Gallery = ({ zooplaData }) => {
   return (
     <GalleryContainer>
       {zooplaData ? zooplaData.map(property => (
-        <HouseCard 
-          imageUrl={property.image_url} 
-          displayableAddress={property.displayable_address} 
-          price={property.price} 
-          shortDescription={property.short_description} 
-          numBathrooms={property.num_bathrooms} 
-          numBedrooms={property.num_bedrooms} 
+        <HouseCard
+          key={property.details_url}
+          imageUrl={property.image_url}
+          displayableAddress={property.displayable_address}
+          price={property.price}
+          shortDescription={property.short_description}
+          numBathrooms={property.num_bathrooms}
+          numBedrooms={property.num_bedrooms}
           detailsUrl={property.details_url}
         />)) : ""
       }
