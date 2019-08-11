@@ -15,7 +15,17 @@ const GalleryContainer = styled.div`
 const Gallery = ({ zooplaData }) => {
   return (
     <GalleryContainer>
-      {zooplaData.map(property => <HouseCard image_url={property.image_url} displayable_address={property.displayable_address} price={property.price} short_description={property.short_description} num_bathrooms={property.num_bathrooms}/>)}
+      {zooplaData ? zooplaData.map(property => (
+        <HouseCard 
+          imageUrl={property.image_url} 
+          displayableAddress={property.displayable_address} 
+          price={property.price} 
+          shortDescription={property.short_description} 
+          numBathrooms={property.num_bathrooms} 
+          numBedrooms={property.num_bedrooms} 
+          detailsUrl={property.details_url}
+        />)) : ""
+      }
     </GalleryContainer>
   )
 }

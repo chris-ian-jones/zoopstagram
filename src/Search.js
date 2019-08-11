@@ -15,14 +15,20 @@ function Search({ setSearchTerm }) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log('form handleSubmit: ', searchField.search)
-    setSearchTerm(searchField)
+    setSearchTerm(searchField.search)
   }
 
   return (
       <StyledForm onSubmit={event => handleSubmit(event)}>
-        <Input size='massive' icon='search' type='text' name='search' placeholder='City' onChange={event => handleChange(event)} />
-        <Button color='violet' size='massive'>Search</Button>
+        <Input 
+          size="massive" 
+          icon="search"
+          type="text" 
+          name="search" 
+          placeholder="City" 
+          onChange={event => handleChange(event)} 
+        />
+        <Button color="violet" size="massive">Search</Button>
       </StyledForm>
   )
 }

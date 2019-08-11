@@ -10,27 +10,34 @@ const StyledTitle = styled.h1`
 `
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState({search: 'Oxford'})
+  const [searchTerm, setSearchTerm] = useState("Oxford")
   const [zooplaData, setZooplaData] = useState([])
-
-  const zooplaApiKey = '6p2r2am6tabxsxb47avcrd9a'
+  const zooplaApiKey = "6p2r2am6tabxsxb47avcrd9a"
   
+  // hook ensures request to get data from zoopla via api, is only made upon a change of state for 'searchTerm'
+  // search term state gets updated upon search button being clicked in search component
   useEffect(() => {
-    fetch(`http://api.zoopla.co.uk/api/v1/property_listings.js?area=${searchTerm.search}&api_key=${zooplaApiKey}`)
+    fetch(`http://api.zoopla.co.uk/api/v1/property_listings.js?area=${searchTerm}&page_size=100&api_key=${zooplaApiKey}`)
       .then(response => response.json())
       .then(response => setZooplaData(response.listing))
-      .catch(error => console.log('Fetch error: ', error))
+      .catch(error => console.log("Fetch error: ", error))
   }, [searchTerm])
 
   return (
     <div className="App">
       <StyledTitle>Zoopstagram</StyledTitle>
-      <Search setSearchTerm={setSearchTerm}/>
+      <Search setSearchTerm={setSearchTerm} />
       <Gallery zooplaData={zooplaData} />
-      
-<img src="https://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla-150x73.png" width="150" height="73" title="Property information powered by Zoopla" alt="Property information powered by Zoopla" border="0"></img>
+      <img 
+        src="https://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla-150x73.png" 
+        width="150" 
+        height="73" 
+        title="Property information powered by Zoopla" 
+        alt="Property information powered by Zoopla" 
+        border="0"
+      />
     </div>
-  );
+  )
 }
 
 export default App;

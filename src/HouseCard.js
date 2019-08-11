@@ -7,34 +7,47 @@ const StyledCardDescription = styled(Card.Description)`
   margin: 0 2% 0 2%;
   text-align: left;
 `
+const IconsContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
-const HouseCard = ({ image_url, displayable_address, price, short_description, num_bathrooms }) => {
+const HouseCard = (props) => {
+  const { imageUrl, displayableAddress, price, shortDescription, numBathrooms, numBedrooms, detailsUrl } = props
   const numPrice = parseInt(price)
-  const short_descriptionLength = short_description.length
+  const shortDescriptionLength = shortDescription.length
 
   function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,')
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
   return (
-    <Card>
-      <Image src={image_url} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{displayable_address}</Card.Header>
-        <Card.Meta>
-          <span>{numPrice > 0 ? `£${formatNumber(numPrice)}` : '' }</span>
-        </Card.Meta>
-        <StyledCardDescription>
-          <span>{short_descriptionLength < 600 ? short_description : '' }</span>
-        </StyledCardDescription>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name='bath' />
-          {num_bathrooms}
-        </a>
-      </Card.Content>
-    </Card>
+    <a href={detailsUrl} target="_blank" rel="noopener noreferrer">
+      <Card>
+        <Image src={imageUrl} wrapped ui={false} alt="House for sale"/>
+        <Card.Content>
+          <Card.Header>{displayableAddress}</Card.Header>
+          <Card.Meta>
+            <span>{numPrice > 0 ? `£${formatNumber(numPrice)}` : "" }</span>
+          </Card.Meta>
+          <StyledCardDescription>
+            <span>{shortDescriptionLength < 600 ? shortDescription : "" }</span>
+          </StyledCardDescription>
+        </Card.Content>
+        <Card.Content extra>
+          <IconsContainer>
+            <div>
+              <Icon name="bath" />
+              {numBathrooms}
+            </div>
+            <div>
+              <Icon name="bed" />
+              {numBedrooms}
+            </div>
+          </IconsContainer>
+        </Card.Content>
+      </Card>
+    </a>
   )
 }
 
