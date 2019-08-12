@@ -8,7 +8,7 @@ const StyledCardDescription = styled(Card.Description)`
   text-align: left;
 `
 const IconsContainer = styled.div`
-  display: flex;
+  display: flex;git status
   justify-content: space-evenly;
 `
 
@@ -17,7 +17,7 @@ const HouseCard = ({ imageUrl, displayableAddress, price, shortDescription, numB
   const shortDescriptionLength = shortDescription.length
 
   function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
   return (
